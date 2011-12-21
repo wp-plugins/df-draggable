@@ -1,0 +1,72 @@
+/**
+ * @package DF Draggable
+ * @version 1.0
+ */
+/*
+Plugin Name: DF Draggable 
+Version: 1.0
+Plugin URI: http://wordpress.org/extend/plugins/df-draggable/
+Description: DF Draggable is a plugin for Wordpress that enables you to make elements draggable utilising jQuery UI draggable
+Author: Dominic Fallows
+Author URI: http://www.dominicfallows.com/apps-plugins/df-draggable/
+License: GPLv2 or later
+Tags: jquery, jquery ui, drag, drop, draggable
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+*/
+
+#df_draggable_admin {
+    font-size:1.2em;
+    
+}
+#df_draggable_admin input[type="text"] {
+    width:200px !important;
+    padding:5px !important;
+}
+.df-admin-update-table {
+    width:600px !important;
+    margin:10px 0 10px 0 !important;
+}
+
+.df-admin-update-table-th {
+    padding:5px 10px 15px 5px !important;
+    text-align:left !important;
+    vertical-align: top;
+    width:260px;
+}
+
+.df-admin-update-table td {
+    padding:5px 5px 15px 5px !important;
+    text-align:left !important;
+    vertical-align: top;
+}
+
+.df-admin-errors {
+    border:1px solid red !important;
+    padding:10px !important;
+    font-size:1.1em !important;
+    font-weight:bold !important;
+    color:red !important;
+    width:400px !important;
+}
+
+.df-admin-success {
+    border:1px solid green !important;
+    padding:10px !important;
+    font-size:1.1em !important;
+    font-weight:bold !important;
+    color:green !important;
+    width:400px !important;
+}
