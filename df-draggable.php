@@ -1,12 +1,12 @@
 <?php
 /**
  * @package DF Draggable
- * @version 1.1
+ * @version 1.11
  * @url	http://wordpress.org/extend/plugins/df-draggable/
  */
 /*
 Plugin Name: DF Draggable 
-Version: 1.1
+Version: 1.11
 Plugin URI: http://wordpress.org/extend/plugins/df-draggable/
 Description: DF Draggable is a plugin for Wordpress that enables you to make elements draggable utilising jQuery UI draggable
 Author: Dominic Fallows
@@ -121,7 +121,8 @@ function load_into_head() {
             jQuery('.<?php echo $makeDraggableClass; ?>').draggable( {
                 containment: '<?php echo $containment; ?>',
                 cursor: 'move',
-                snap: <?php echo $snap; ?>
+                snap: <?php echo $snap; ?>,
+				stack: ".<?php echo $makeDraggableClass; ?>"
             });
             
             jQuery('.<?php echo $makeDraggableClass; ?>').hover(function() {
