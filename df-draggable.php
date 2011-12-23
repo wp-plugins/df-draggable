@@ -1,12 +1,12 @@
 <?php
 /**
  * @package DF Draggable
- * @version 1.1
+ * @version 1.12
  * @url	http://wordpress.org/extend/plugins/df-draggable/
  */
 /*
 Plugin Name: DF Draggable 
-Version: 1.1
+Version: 1.12
 Plugin URI: http://wordpress.org/extend/plugins/df-draggable/
 Description: DF Draggable is a plugin for Wordpress that enables you to make elements draggable utilising jQuery UI draggable
 Author: Dominic Fallows
@@ -32,7 +32,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 function define_globals() {
     global $wpdb;
-    define('DF_DRAGGABLE_VERSION', '1.0');  
+    define('DF_DRAGGABLE_VERSION', '1.12');  
     define('DF_DRAGGABLE_PLUGIN_URL', plugin_dir_url( __FILE__ ));
 }
 
@@ -48,6 +48,8 @@ function init_activation() {
         $df_draggable_options['containment']            = "window";
         $df_draggable_options['dragBGcolor']            = "#efefef";
         $df_draggable_options['snap']                   = true;
+        $df_draggable_options['iframeFix']              = true;
+        $df_draggable_options['handle']                 = "";
         //save the init options
         update_option('df-draggable-options', serialize($df_draggable_options));
     }
@@ -95,6 +97,8 @@ function load_into_head() {
         $containment            = $df_draggable_options['containment']; 
         $dragBGcolor            = $df_draggable_options['dragBGcolor'];
         $snap                   = $df_draggable_options['snap'];
+        $iframeFix              = $df_draggable_options['iframeFix'];
+        $handle                 = $df_draggable_options['handle'];
     } else {
         $makeDraggableClass = null;
     }
@@ -111,7 +115,7 @@ function load_into_head() {
     }
     </script>
     <script type="text/javascript">if (typeof $ != 'undefined') { $.noConflict(); }</script>
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
     <?php
     if($makeDraggableClass !=null && $makeDraggableClass !="none") { ?>
     <script type="text/javascript">
@@ -121,20 +125,19 @@ function load_into_head() {
             jQuery('.<?php echo $makeDraggableClass; ?>').draggable( {
                 containment: '<?php echo $containment; ?>',
                 cursor: 'move',
-                snap: <?php echo $snap; ?>
+                snap: <?php echo $snap; ?>,
+		stack: ".<?php echo $makeDraggableClass; ?>",
+                iframeFix: <?php echo $iframeFix; ?><?php if (!empty($handle)) { ?>,
+                handle: '.<?php echo $handle; ?>'<?php } ?>
             });
-            
-            jQuery('.<?php echo $makeDraggableClass; ?>').hover(function() {
-                jQuery(this).css('cursor','move');
-                }, function() {
-                    jQuery(this).css('cursor','auto');
-            });
-
             
         });
     </script>
+    
+    <?php if (!empty($handle)) { $classMove = $handle; } else { $classMove = $makeDraggableClass; } ?>
     <style type="text/css">
         .ui-draggable-dragging { background: <?php echo $dragBGcolor; ?>; }
+        .<?php echo $classMove; ?>:hover { cursor: move; }
     </style>
     <?php } ?>
 <?php
