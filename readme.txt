@@ -2,7 +2,7 @@
 Contributors: dominicfallows
 Requires at least: 3.0
 Tested up to: 3.3
-Stable tag: 1.11
+Stable tag: 1.12
 License: GPLv2 or later
 Tags: jquery, jquery ui, drag, drop, draggable
 
@@ -24,6 +24,9 @@ Coming Soon:
 Upload the DF Draggle plugin to your blog, Activate it, Choose settings, You're done!
 
 == Changelog ==
+= 1.12 =
+* added iFrameFix option
+* added fix drag function to handle option
 
 = 1.11 =
 * Fixed bring to front on drag for elements

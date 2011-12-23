@@ -1,7 +1,7 @@
 <?php
 /**
  * @package DF Draggable
- * @version 1.11
+ * @version 1.12
  * @url	http://wordpress.org/extend/plugins/df-draggable/
 **/
 
