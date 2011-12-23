@@ -15,6 +15,8 @@ Features:
 * Choose the draggable element background colour whilst dragging
 * Choose the area which the element can be dragged around
 * Choose to snap to other objects
+* Choose handle
+* Choose iframeFix
 
 Coming Soon:
 * Run an action of “drop” of draggable element
