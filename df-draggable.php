@@ -1,18 +1,18 @@
 <?php
 /**
  * @package DF Draggable
- * @version 1.13
+ * @version 1.13.1
  * @url	http://wordpress.org/extend/plugins/df-draggable/
  */
 /*
 Plugin Name: DF Draggable 
-Version: 1.13
+Version: 1.13.1
 Plugin URI: http://wordpress.org/extend/plugins/df-draggable/
-Description: DF Draggable is a plugin for Wordpress that enables you to make elements draggable utilising jQuery UI draggable
+Description: DF Draggable is a plugin for WordPress that enables you to make elements draggable utilising jQuery UI draggable and jQuery UI Touch Punch adding support for desktop and mobile browsers. 
 Author: Dominic Fallows
 Author URI: http://www.dominicfallows.com/apps-plugins/df-draggable/
 License: GPLv2 or later
-Tags: jquery, jquery ui, drag, drop, draggable
+Tags: jquery, jquery ui, drag, drop, draggable, touch, punch
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
