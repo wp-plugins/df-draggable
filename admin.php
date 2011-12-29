@@ -1,7 +1,7 @@
 <?php
 /**
  * @package DF Draggable
- * @version 1.1
+ * @version 1.13
  * @url	http://wordpress.org/extend/plugins/df-draggable/
 **/
 
@@ -52,7 +52,7 @@ function df_draggable_menu() {
 add_action( 'admin_menu', 'df_draggable_menu' );
 
 
-function df_draggable_createform($form_id, $action, $button_text = "Submit", $errors = array(), $makeDraggableClassSetting = null, $containment = "window", $dragBGcolor = "#efefef", $snap = true) {
+function df_draggable_createform($form_id, $action, $button_text = "Submit", $errors = array(), $makeDraggableClassSetting = null, $containment = "window", $dragBGcolor = "#efefef", $snap = true, $iframeFix = "true", $handle = null) {
   
     if (!empty($errors)) {    
         echo '<div id="df-admin-errors" class="df-admin-errors"><ul>';
@@ -101,7 +101,7 @@ function df_draggable_createform($form_id, $action, $button_text = "Submit", $er
     echo '<tr>
             <td class="df-admin-update-table-th">Background color of the draggable element, whilst being dragged</td>
             <td><input id="dragBGcolor" name="dragBGcolor" type="text" maxlength="255" value="'. stripslashes($dragBGcolor) .'" />
-                <div id="ilctabscolorpicker"></div>
+                <p><small>Leave this blank, or type <strong>transparent</strong> if you do not want a colour</small></p><div id="ilctabscolorpicker"></div>
             </td>
             </tr>';  
     
@@ -121,6 +121,32 @@ function df_draggable_createform($form_id, $action, $button_text = "Submit", $er
             <p><small>Elements will snap together when close to each other</small></p>
             </td>
         </tr>'; 
+                
+                
+   echo '<tr>
+            <td class="df-admin-update-table-th">Apply the iFrame Fix? (recommended)</td>
+            <td>
+            <select id="iframeFix" name="iframeFix">
+                <option id="true" value="true" ';
+                if ($iframeFix == "true") { echo "selected='selected'"; }
+                echo '>Yes</option>
+                    
+                <option id="false" value="false" ';
+                if ($iframeFix == "false") { echo "selected='selected'"; }
+                echo '>No</option>
+
+            </select>
+            <p><small>You can turn this off if you are experiencing problems</small></p>          
+            </td>
+        </tr>'; 
+                
+                
+    echo '<tr>
+            <td class="df-admin-update-table-th">Class name for child element of draggable element to fix drag function.</td>
+            <td><input id="handle" name="handle" type="text" maxlength="255" value="'. $handle .'" />
+                <p><small>Leave this blank to apply drag function to entire draggable element</small></p>
+            </td>
+            </tr>';
                 
     
     echo '<tr>
@@ -164,7 +190,9 @@ function df_draggable_settings_page() { ?>
                                         $_POST['makeDraggableClass'],
                                         $_POST['containment'],
                                         $_POST['dragBGcolor'],
-                                        $_POST['snap']
+                                        $_POST['snap'],
+                                        $_POST['iframeFix'],
+                                        $_POST['handle']
                                         );
 
             } else {
@@ -174,6 +202,8 @@ function df_draggable_settings_page() { ?>
                 $df_draggable_options['containment']            = $_POST['containment'];
                 $df_draggable_options['dragBGcolor']            = $_POST['dragBGcolor'];
                 $df_draggable_options['snap']                   = $_POST['snap'];
+                $df_draggable_options['iframeFix']              = $_POST['iframeFix'];
+                $df_draggable_options['handle']                 = $_POST['handle'];
                 
                 /* UPDATE SETTINGS */
                 
@@ -187,7 +217,9 @@ function df_draggable_settings_page() { ?>
                                         $_POST['makeDraggableClass'],
                                         $_POST['containment'],
                                         $_POST['dragBGcolor'],
-                                        $_POST['snap']
+                                        $_POST['snap'],
+                                        $_POST['iframeFix'],
+                                        $_POST['handle']
                                         );
                     
                 } catch (Exception $e) {
@@ -201,7 +233,9 @@ function df_draggable_settings_page() { ?>
                                         $_POST['makeDraggableClass'],
                                         $_POST['containment'],
                                         $_POST['dragBGcolor'],
-                                        $_POST['snap']
+                                        $_POST['snap'],
+                                        $_POST['iframeFix'],
+                                        $_POST['handle']
                                         );
                     
                 } 
@@ -222,11 +256,15 @@ function df_draggable_settings_page() { ?>
                 $containment        = $df_draggable_options['containment']; 
                 $dragBGcolor        = $df_draggable_options['dragBGcolor'];
                 $snap               = $df_draggable_options['snap'];
+                $iframeFix          = $df_draggable_options['iframeFix'];
+                $handle             = $df_draggable_options['handle'];
             } else {
                 $makeDraggableClass = "none";
                 $containment        = null;
                 $dragBGcolor        = null;
                 $snap               = null;
+                $iframeFix          = true;
+                $handle             = null;    
             }
             
             df_draggable_createform("df-admin-update", 
@@ -236,7 +274,9 @@ function df_draggable_settings_page() { ?>
                                         $makeDraggableClass,
                                         $containment,
                                         $dragBGcolor,
-                                        $snap
+                                        $snap,
+                                        $iframeFix,
+                                        $handle
                                     );
         }     
         ?>
