@@ -1,12 +1,12 @@
 <?php
 /**
  * @package DF Draggable
- * @version 1.13.1
+ * @version 1.13.2
  * @url	http://wordpress.org/extend/plugins/df-draggable/
  */
 /*
 Plugin Name: DF Draggable 
-Version: 1.13.1
+Version: 1.13.2
 Plugin URI: http://wordpress.org/extend/plugins/df-draggable/
 Description: DF Draggable is a plugin for WordPress that enables you to make elements draggable utilising jQuery UI draggable and jQuery UI Touch Punch adding support for desktop and mobile browsers. 
 Author: Dominic Fallows
@@ -32,7 +32,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 function define_globals() {
     global $wpdb;
-    define('DF_DRAGGABLE_VERSION', '1.12');  
+    define('DF_DRAGGABLE_VERSION', '1.13.2');  
     define('DF_DRAGGABLE_PLUGIN_URL', plugin_dir_url( __FILE__ ));
 }
 
@@ -73,18 +73,13 @@ if (is_admin()) { require_once dirname( __FILE__ ) . '/admin.php'; }
 
 //init
 function df_draggable_init() {
- 
 	wp_register_style('df-draggable-view.css', DF_DRAGGABLE_PLUGIN_URL . 'df-draggable-view.css');
 	wp_enqueue_style('df-draggable-view.css');
-        
-        wp_enqueue_script("jquery");
-        //wp_enqueue_script("df-draggable-view", DF_DRAGGABLE_PLUGIN_URL .'includes/df-draggable-view.js', array("jquery"), "1.7.1",1);	
-        
-        //wp_register_script('df-draggable-view', DF_DRAGGABLE_PLUGIN_URL .'includes/df-draggable-view.js');
-        //wp_enqueue_script('df-draggable-view');
-        
+	wp_enqueue_script("jquery");
+	wp_enqueue_script('jqueryui', 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js', array('jquery'), "1.8.16");
+    //wp_register_script('df-draggable-view', DF_DRAGGABLE_PLUGIN_URL .'includes/df-draggable-view.js');
+   	//wp_enqueue_script('df-draggable-view');
 }
-
 add_action('init', 'df_draggable_init');
 
 //view handling
