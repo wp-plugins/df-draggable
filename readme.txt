@@ -2,7 +2,7 @@
 Contributors: dominicfallows
 Requires at least: 3.0
 Tested up to: 3.3
-Stable tag: 1.13
+Stable tag: 1.13.2
 License: GPLv2 or later
 Tags: jquery, jquery ui, drag, drop, draggable
 
@@ -31,6 +31,12 @@ Coming Soon:
 Upload the DF Draggle plugin to your blog, Activate it, Choose settings, You're done!
 
 == Changelog ==
+= 1.13.2 =
+* updated init enqueue scripts
+
+= 1.13.1 =
+* corrected description
+
 = 1.13 =
 * added jQuery UI Touch Punch library 
 
